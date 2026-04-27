@@ -1,0 +1,3 @@
+[submodule "src/main/proto/employee-service"]
+	path = src/main/proto/employee-service
+	url = https://github.com/Sneha-9/EmployeeAttendanceServiceModel.git
