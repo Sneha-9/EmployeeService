@@ -1,8 +1,8 @@
 plugins {
         id("org.springframework.boot") version "4.0.3"
         id("io.spring.dependency-management") version "1.1.7"
-    id("com.google.protobuf") version "0.9.6"
-    id("java")
+        id("com.google.protobuf") version "0.9.6"
+        application
 }
 
 group = "org.example"
@@ -34,8 +34,21 @@ dependencies {
 
     implementation("com.google.protobuf:protobuf-java:4.33.5")
     implementation("com.hubspot.jackson:jackson-datatype-protobuf:0.9.18")
-    implementation("com.google.protobuf:protobuf-java-util:4.33.5")
 
+
+    compileOnly("org.projectlombok:lombok:1.18.42")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:4.0.3")
+
+    annotationProcessor("org.projectlombok:lombok:1.18.42")
+
+    runtimeOnly("org.postgresql:postgresql:42.7.7")
+
+
+}
+application {
+    // Define the main class for the application.
+    mainClass = "com.sneha.Main"
 }
 
 tasks.test {
