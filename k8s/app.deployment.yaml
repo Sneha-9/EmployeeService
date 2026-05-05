@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: employeeservice
-          image: sneha0911/userservice:latest
+          image: sneha0911/employeeservice:v1
+          imagePullPolicy: Always
           env:
             - name: DB_HOST
               value: "employeeservice-db-h"
