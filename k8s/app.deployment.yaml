@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employeeservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employeeservice
+  template:
+    metadata:
+      labels:
+        app: employeeservice
+    spec:
+      containers:
+        - name: employeeservice
+          image: sneha0911/userservice:latest
+          env:
+            - name: DB_HOST
+              value: "employeeservice-db-h"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: "employeeservice"
+            - name: DB_USERNAME
+              value: "sneha"
+            - name: DB_PASSWORD
+              value: "password"
+          ports:
+            - containerPort: 8097

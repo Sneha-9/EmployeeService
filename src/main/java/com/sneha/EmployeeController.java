@@ -23,7 +23,7 @@ public class EmployeeController {
 
     @PostMapping(value = Constant.EMPLOYEE_REGISTER_PATH, consumes = Constant.API_RESPONSE_MEDIA_TYPE, produces = Constant.API_RESPONSE_MEDIA_TYPE)
     EmployeeRegisterResponse registerEmployee(@RequestBody EmployeeRegisterRequest employeeRegisterRequest) throws ValidationException, DuplicateEmployeeException, InternalSystemException {
-        log.info("strarting "+ employeeRegisterRequest.getName());
+
       String response = employeeService.registerEmployee(employeeRegisterRequest.getName(),employeeRegisterRequest.getEmail());
 
       return EmployeeRegisterResponse.newBuilder().setId(response).build();

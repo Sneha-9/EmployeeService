@@ -9,7 +9,6 @@ import com.sneha.model.EmployeeDao;
 import com.sneha.store.EmployeeRepository;
 import lombok.AllArgsConstructor;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class EmployeeService {
   public  String registerEmployee(String name, String email) throws ValidationException, InternalSystemException, DuplicateEmployeeException {
 
         if(name == null || name.isEmpty()){
-            log.error(name ,"edww");
+            log.error("Name is null or empty");
             throw new ValidationException(Constant.NAME_VALIDATION_EXCEPTION_MESSAGE);
         }
         if(email == null || email.isEmpty()){

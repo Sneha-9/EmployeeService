@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: employeeservice
+spec:
+  selector:
+    app: employeeservice
+  ports:
+    - protocol: TCP
+      port: 80         # Port the service listens on inside the cluster
+      targetPort: 8097 # The port your app runs on inside the pod
+  type: ClusterIP

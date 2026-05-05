@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: employeeservice-db
+spec:
+  serviceName: "employeeservice-db-h"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employeeservice-db
+  template:
+    metadata:
+      labels:
+        app: employeeservice-db
+    spec:
+      containers:
+        - name: employeeservice-db
+          image: postgres:alpine
+          volumeMounts:
+            - name: postgres-storage-pv      # Must match the name in 'volumes'
+              mountPath: /var/lib/postgresql/18/docker # The internal Postgres path
+          env:
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+          ports:
+            - containerPort: 5432
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage-pv
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: local-path
