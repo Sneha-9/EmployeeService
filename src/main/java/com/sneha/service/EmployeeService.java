@@ -78,10 +78,6 @@ public class EmployeeService {
           throw new InternalSystemException(Constant.INTERNAL_SYSTEM_EXCEPTION_MESSAGE) ;
       }
 
-      if(!validEmployee){
-            throw  new ValidationException(Constant.INVALID_ID_VALIDATION_EXCEPTION_MESSAGE);
-      }
-
       return validEmployee;
 
     }
